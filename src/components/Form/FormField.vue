@@ -1,24 +1,30 @@
 <template>
 	<div class="input-wrapper">
-		<Icon
-			class="input-wrapper__svg"
-			:icon="innerIcon.name"
-			:fill="innerIcon.fill"
-		/>
-		<input
-			@focus="isFocused($event.target)"
-			@blur="itsBlurry($event.target)"
-			:autofocus="autoFocus"
-			:type="type"
-			:placeholder="placeholder"
-			v-model="userInput"
-		/>
-		<Icon
-			class="input-wrapper__outer-svg"
-			fill="#8257e6"
-			@click="wasClicked"
-			:icon="outerIcon.name"
-		/>
+		<ValidationProvider :name="placeholder" :rules="rules" v-slot="{ errors }">
+			<Icon
+				class="input-wrapper__svg"
+				:icon="innerIcon.name"
+				:fill="innerIcon.fill"
+			/>
+			<input
+				:name="placeholder"
+				@focus="isFocused($event.target)"
+				@blur="itsBlurry($event.target)"
+				:autofocus="autoFocus"
+				:type="type"
+				:placeholder="placeholder"
+				v-model="userInput"
+			/>
+			<span class="input-wrapper__span" v-if="errors.length">
+				{{ errors[0] }}
+			</span>
+			<Icon
+				class="input-wrapper__outer-svg"
+				fill="#8257e6"
+				@click="wasClicked"
+				:icon="outerIcon.name"
+			/>
+		</ValidationProvider>
 	</div>
 </template>
 
@@ -50,6 +56,11 @@ export default {
 			type: Boolean,
 			required: false,
 			default: false,
+		},
+		rules: {
+			type: String,
+			required: false,
+			default: '',
 		},
 	},
 	data: () => ({
@@ -89,6 +100,11 @@ $purple: #8257e6;
 		transform: translateY(-50%);
 		font-size: 14px;
 		transition: fill 0.2s ease 0s;
+	}
+	&__span {
+		display: inline-block;
+		color: rgb(211, 66, 66);
+		font-size: 14px;
 	}
 	&__outer-svg {
 		background: none;

@@ -1,48 +1,49 @@
 <template>
 	<div class="wrapper">
-		<form class="wrapper__form" @submit.prevent="submit">
-			<FormField
-				type="text"
-				placeholder="Email"
-				@focus="isFocused"
-				@blur="itsBlurry"
-				@input="updateEmail"
-				:autoFocus="true"
-				:innerIcon="emailIconConfig"
-			/>
-			<span class="wrapper__form__valid" v-if="emailIsNotValid">
-				{{ validatorText }}
-			</span>
-			<FormField
-				placeholder="Senha"
-				@focus="isFocused"
-				@blur="itsBlurry"
-				@outerWasClicked="handleOuterIconClick"
-				@input="updatePassword"
-				:type="passwordFieldType"
-				:innerIcon="passwordIconConfig.inner"
-				:outerIcon="passwordIconConfig.outer"
-			/>
-			<span class="wrapper__form__span">Esqueci minha senha</span>
-			<button :disabled="disableButton" type="submit">Entrar</button>
-			<p>
-				Não tem uma conta?
-				<a>Registre-se</a>
-			</p>
-			<div class="wrapper__form__pseudos"></div>
-			<div class="wrapper__form__github">
-				<p>Ou entre com</p>
-				<a
-					href="#"
-					@mouseenter="toggleGithubIconColor"
-					@mouseleave="toggleGithubIconColor"
-				>
-					<Icon icon="github" :fill="githubIconColor" />
-					<div style="width: 12px"></div>
-					Github
-				</a>
-			</div>
-		</form>
+		<ValidationObserver v-slot="{ handleSubmit }">
+			<form class="wrapper__form" @submit.prevent="handleSubmit(submit)">
+				<FormField
+					type="text"
+					placeholder="Email"
+					rules="required|email"
+					@focus="isFocused"
+					@blur="itsBlurry"
+					:autoFocus="true"
+					:innerIcon="emailIconConfig"
+					v-model="email"
+				/>
+				<FormField
+					placeholder="Senha"
+					rules="required"
+					@focus="isFocused"
+					@blur="itsBlurry"
+					@outerWasClicked="handleOuterIconClick"
+					:type="passwordFieldType"
+					:innerIcon="passwordIconConfig.inner"
+					:outerIcon="passwordIconConfig.outer"
+					v-model="password"
+				/>
+				<span class="wrapper__form__span">Esqueci minha senha</span>
+				<button :disabled="disableButton" type="submit">Entrar</button>
+				<p>
+					Não tem uma conta?
+					<a>Registre-se</a>
+				</p>
+				<div class="wrapper__form__pseudos"></div>
+				<div class="wrapper__form__github">
+					<p>Ou entre com</p>
+					<a
+						href="#"
+						@mouseenter="toggleGithubIconColor"
+						@mouseleave="toggleGithubIconColor"
+					>
+						<Icon icon="github" :fill="githubIconColor" />
+						<div style="width: 12px"></div>
+						Github
+					</a>
+				</div>
+			</form>
+		</ValidationObserver>
 	</div>
 </template>
 
@@ -67,7 +68,6 @@ export default {
 		},
 		githubIconColor: '#8257e6',
 		passwordFieldType: 'password',
-		validatorText: 'Insira um e-mail válido.',
 		email: '',
 		password: '',
 	}),
@@ -76,18 +76,9 @@ export default {
 		disableButton() {
 			return this.email.length < 4 || this.password.length < 4
 		},
-		emailIsNotValid() {
-			return this.validatorText.length > 0
-		},
 	},
 	methods: {
 		submit() {},
-		updateEmail(val) {
-			this.email = val
-		},
-		updatePassword(val) {
-			this.password = val
-		},
 		isFocused({ placeholder }) {
 			if (placeholder === 'Email') {
 				this.emailIconConfig = {
@@ -152,11 +143,6 @@ $secondary-purple: #41356b;
 		display: grid;
 		grid-auto-flow: row;
 		gap: 10px;
-		&__valid {
-			display: inline-block;
-			color: rgb(211, 66, 66);
-			font-size: 14px;
-		}
 		&__span {
 			align-self: flex-start;
 			color: $main-purple;
