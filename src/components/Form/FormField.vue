@@ -56,6 +56,11 @@ export default {
 		userInput: '',
 	}),
 	components: { Icon },
+	watch: {
+		userInput() {
+			this.$emit('input', this.userInput)
+		},
+	},
 	methods: {
 		isFocused(element) {
 			this.$emit('focus', element)

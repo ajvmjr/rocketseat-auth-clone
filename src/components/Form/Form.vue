@@ -6,6 +6,7 @@
 				placeholder="Email"
 				@focus="isFocused"
 				@blur="itsBlurry"
+				@input="updateEmail"
 				:autoFocus="true"
 				:innerIcon="emailIconConfig"
 			/>
@@ -14,10 +15,13 @@
 				@focus="isFocused"
 				@blur="itsBlurry"
 				@outerWasClicked="handleOuterIconClick"
+				@input="updatePassword"
 				:type="passwordFieldType"
 				:innerIcon="passwordIconConfig.inner"
 				:outerIcon="passwordIconConfig.outer"
 			/>
+			<span class="wrapper__form__span">Esqueci minha senha</span>
+			<button :disabled="disableButton">Entrar</button>
 		</form>
 	</div>
 </template>
@@ -41,9 +45,22 @@ export default {
 			},
 		},
 		passwordFieldType: 'password',
+		email: '',
+		password: '',
 	}),
 	components: { FormField },
+	computed: {
+		disableButton() {
+			return this.email.length < 4 || this.password.length < 4
+		},
+	},
 	methods: {
+		updateEmail(val) {
+			this.email = val
+		},
+		updatePassword(val) {
+			this.password = val
+		},
 		isFocused({ placeholder }) {
 			if (placeholder === 'Email') {
 				this.emailIconConfig = {
@@ -90,6 +107,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$main-purple: #8257e6;
+$secondary-purple: #41356b;
+
 .wrapper {
 	background: #202024;
 	border-radius: 5px;
@@ -101,6 +121,30 @@ export default {
 		display: grid;
 		grid-auto-flow: row;
 		gap: 10px;
+		&__span {
+			align-self: flex-start;
+			color: $main-purple;
+			font-size: 14px;
+			font-weight: 600;
+			margin: 1px 0px 24px;
+			opacity: 0.8;
+			transition: opacity 0.2s ease 0s;
+		}
+		button {
+			background: rgb(130, 87, 229);
+			border-radius: 5px;
+			border: 0px;
+			color: rgb(255, 255, 255);
+			font-weight: bold;
+			font-size: 16px;
+			height: 50px;
+			transition: background 0.2s ease 0s, color 0.2s ease 0s;
+			text-transform: uppercase;
+			&:disabled {
+				background: $secondary-purple;
+				color: #ffffff59;
+			}
+		}
 	}
 }
 </style>
