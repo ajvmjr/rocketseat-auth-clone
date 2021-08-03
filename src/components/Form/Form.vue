@@ -6,6 +6,7 @@
 				placeholder="Email"
 				@focus="isFocused"
 				@blur="itsBlurry"
+				:autoFocus="true"
 				:innerIcon="emailIconConfig"
 			/>
 			<FormField

@@ -8,6 +8,7 @@
 		<input
 			@focus="isFocused($event.target)"
 			@blur="itsBlurry($event.target)"
+			:autofocus="autoFocus"
 			:type="type"
 			:placeholder="placeholder"
 			v-model="userInput"
@@ -44,6 +45,11 @@ export default {
 			type: Object,
 			required: false,
 			default: () => ({}),
+		},
+		autoFocus: {
+			type: Boolean,
+			required: false,
+			default: false,
 		},
 	},
 	data: () => ({
