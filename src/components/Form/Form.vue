@@ -1,6 +1,6 @@
 <template>
 	<div class="wrapper">
-		<form class="wrapper__form">
+		<form class="wrapper__form" @submit.prevent="submit">
 			<FormField
 				type="text"
 				placeholder="Email"
@@ -10,6 +10,9 @@
 				:autoFocus="true"
 				:innerIcon="emailIconConfig"
 			/>
+			<span class="wrapper__form__valid" v-if="emailIsNotValid">
+				{{ validatorText }}
+			</span>
 			<FormField
 				placeholder="Senha"
 				@focus="isFocused"
@@ -21,7 +24,7 @@
 				:outerIcon="passwordIconConfig.outer"
 			/>
 			<span class="wrapper__form__span">Esqueci minha senha</span>
-			<button :disabled="disableButton">Entrar</button>
+			<button :disabled="disableButton" type="submit">Entrar</button>
 			<p>
 				Não tem uma conta?
 				<a>Registre-se</a>
@@ -64,6 +67,7 @@ export default {
 		},
 		githubIconColor: '#8257e6',
 		passwordFieldType: 'password',
+		validatorText: 'Insira um e-mail válido.',
 		email: '',
 		password: '',
 	}),
@@ -72,8 +76,12 @@ export default {
 		disableButton() {
 			return this.email.length < 4 || this.password.length < 4
 		},
+		emailIsNotValid() {
+			return this.validatorText.length > 0
+		},
 	},
 	methods: {
+		submit() {},
 		updateEmail(val) {
 			this.email = val
 		},
@@ -144,6 +152,11 @@ $secondary-purple: #41356b;
 		display: grid;
 		grid-auto-flow: row;
 		gap: 10px;
+		&__valid {
+			display: inline-block;
+			color: rgb(211, 66, 66);
+			font-size: 14px;
+		}
 		&__span {
 			align-self: flex-start;
 			color: $main-purple;
