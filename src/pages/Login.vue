@@ -1,3 +1,40 @@
 <template>
-	<h1>Login page.</h1>
+	<div class="container">
+		<div class="container__form-wrapper">
+			<h1>Faça seu login na plataforma</h1>
+			<Form />
+		</div>
+	</div>
 </template>
+
+<script>
+import Form from '@/components/Form/Form'
+
+export default {
+	components: { Form },
+}
+</script>
+
+<style lang="scss" scoped>
+.container {
+	align-items: center;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	h1 {
+		color: #e1e1e6;
+		font-size: 54px;
+		line-height: 64px;
+		margin-top: 64px;
+	}
+	&__form-wrapper {
+		align-items: center;
+		display: flex;
+		height: 534px;
+		justify-content: space-between;
+		max-width: 936px;
+		padding: 32px;
+		width: 100%;
+	}
+}
+</style>
