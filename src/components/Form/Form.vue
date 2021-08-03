@@ -43,30 +43,30 @@ export default {
 	}),
 	components: { FormField },
 	methods: {
-		isFocused(input) {
-			if (input === 'Email') {
+		isFocused({ placeholder }) {
+			if (placeholder === 'Email') {
 				this.emailIconConfig = {
 					...this.emailIconConfig,
 					fill: '#8257e6',
 				}
 			}
 
-			if (input === 'Senha') {
+			if (placeholder === 'Senha') {
 				this.passwordIconConfig.inner = {
 					...this.passwordIconConfig.inner,
 					fill: '#8257e6',
 				}
 			}
 		},
-		itsBlurry(input) {
-			if (input === 'Email') {
+		itsBlurry({ placeholder }) {
+			if (placeholder === 'Email') {
 				this.emailIconConfig = {
 					...this.emailIconConfig,
 					fill: '#202024',
 				}
 			}
 
-			if (input === 'Senha') {
+			if (placeholder === 'Senha') {
 				this.passwordIconConfig.inner = {
 					...this.passwordIconConfig.inner,
 					fill: '#202024',

@@ -52,14 +52,13 @@ export default {
 	components: { Icon },
 	methods: {
 		isFocused(element) {
-			this.$emit('focus', element.placeholder)
+			this.$emit('focus', element)
 		},
 		itsBlurry(element) {
-			this.$emit('blur', element.placeholder)
+			this.$emit('blur', element)
 		},
 		wasClicked() {
 			this.$emit('outerWasClicked')
-			// this.$emit('focus', 'Senha')
 		},
 	},
 }
