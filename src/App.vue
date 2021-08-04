@@ -11,6 +11,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+	box-sizing: border-box;
+}
+
 #app {
 	font-family: 'Roboto';
 	background: #121214;

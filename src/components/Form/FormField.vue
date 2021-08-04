@@ -94,17 +94,20 @@ $purple: #8257e6;
 	position: relative;
 	flex: 1 1 0%;
 	&__svg {
+		box-sizing: border-box;
 		position: absolute;
 		left: 16px;
-		top: 50%;
+		top: 25px;
 		transform: translateY(-50%);
 		font-size: 14px;
 		transition: fill 0.2s ease 0s;
 	}
 	&__span {
-		display: inline-block;
 		color: rgb(211, 66, 66);
+		display: inline-block;
 		font-size: 14px;
+		margin-top: 5px;
+		overflow: hidden;
 	}
 	&__outer-svg {
 		background: none;
@@ -116,32 +119,24 @@ $purple: #8257e6;
 		top: 50%;
 		transform: translateY(-50%);
 		transition: opacity 0.2s ease 0s;
+		overflow: hidden;
 	}
-	input {
+	input,
+	textarea {
 		background: $main-color;
 		border-color: $main-color;
 		border-radius: 5px;
+		border: 2px solid $main-color;
 		color: #fff;
 		font-size: 16px;
 		height: 50px;
 		padding: 0px 1em 0px 2.65em;
+		transition: border 0.2s ease 0s;
+		outline: 0;
 		width: 100%;
 		&:focus {
 			border-color: $purple;
 		}
-	}
-	input,
-	textarea {
-		outline: 0px;
-		background: $main-color;
-		border: 2px solid $main-color;
-		border-radius: 5px;
-		height: 50px;
-		padding: 15px 40px;
-		color: #fff;
-		font-size: 17px;
-		width: 100%;
-		transition: border 0.2s ease 0s;
 	}
 }
 </style>
