@@ -8,7 +8,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
+	beforeMount() {
+		this.$store.dispatch('autoLogin')
+		if (!this.isAuthenticated) this.$router.push('/')
+	},
+	computed: {
+		...mapGetters(['isAuthenticated']),
+	},
 	methods: {
 		logout() {
 			this.$store.dispatch('logout')

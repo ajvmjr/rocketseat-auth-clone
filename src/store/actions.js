@@ -26,6 +26,17 @@ export default {
       throw e
     }
   },
+  autoLogin({ dispatch }){
+    const token = getStorage('token')
+    const tokenExpiration = getStorage('tokenExpiration')
+
+    if(!token || new Date().getTime() > +tokenExpiration){
+      dispatch('logout')
+      return
+    }
+
+    dispatch('setTokenInfo', { idToken: token, expiresIn: +tokenExpiration })
+  },
   setTokenInfo({ commit }, data){
     commit('setToken', data.idToken)
     commit('setTokenExpiration', data.expiresIn)
