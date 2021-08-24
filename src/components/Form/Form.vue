@@ -78,7 +78,15 @@ export default {
 		},
 	},
 	methods: {
-		submit() {},
+		async submit() {
+			const { email, password } = this
+			try {
+				await this.$store.dispatch('signin', { email, password })
+				this.$router.push('/authenticated')
+			} catch (e) {
+				console.error(e)
+			}
+		},
 		isFocused({ placeholder }) {
 			if (placeholder === 'Email') {
 				this.emailIconConfig = {

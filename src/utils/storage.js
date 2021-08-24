@@ -10,3 +10,8 @@ export const getStorage = key => {
   if(!window) return
   return parse(localStorage.getItem(key))
 }
+
+export const removeItemFromStorage = key => {
+  if(!window) return
+  localStorage.removeItem(key)
+}
