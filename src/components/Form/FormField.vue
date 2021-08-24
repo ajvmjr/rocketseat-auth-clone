@@ -1,12 +1,18 @@
 <template>
 	<div class="input-wrapper">
-		<ValidationProvider :name="placeholder" :rules="rules" v-slot="{ errors }">
+		<ValidationProvider
+			:name="placeholder"
+			:rules="rules"
+			:vid="id"
+			v-slot="{ errors }"
+		>
 			<Icon
 				class="input-wrapper__svg"
 				:icon="innerIcon.name"
 				:fill="innerIcon.fill"
 			/>
 			<input
+				:id="id"
 				:name="placeholder"
 				@focus="isFocused($event.target)"
 				@blur="itsBlurry($event.target)"
@@ -32,6 +38,11 @@
 import Icon from '@/components/Icon'
 export default {
 	props: {
+		id: {
+			type: String,
+			required: false,
+			default: '',
+		},
 		type: {
 			type: String,
 			required: true,
@@ -116,7 +127,7 @@ $purple: #8257e6;
 		display: block;
 		position: absolute;
 		right: 16px;
-		top: 50%;
+		top: 25px;
 		transform: translateY(-50%);
 		transition: opacity 0.2s ease 0s;
 		overflow: hidden;

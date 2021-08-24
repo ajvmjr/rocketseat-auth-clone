@@ -9,6 +9,16 @@ const routes = [
     path: '/',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: () => import(/* webpackChunkName: "signup" */ '@/pages/Signup')
+  },
+  {
+    path: '/authenticated',
+    name: 'authenticated',
+    component: () => import(/* webpackChunkName: "authenticated" */ '@/pages/Authenticated')
   }
 ]
 

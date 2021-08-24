@@ -33,7 +33,7 @@ export default {
 		height: 534px;
 		justify-content: space-between;
 		max-width: 936px;
-		padding: 32px;
+		padding: 32px 22px;
 		width: 100%;
 	}
 }

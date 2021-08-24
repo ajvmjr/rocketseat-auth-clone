@@ -27,7 +27,7 @@
 				<button :disabled="disableButton" type="submit">Entrar</button>
 				<p>
 					Não tem uma conta?
-					<a>Registre-se</a>
+					<a href="/signup">Registre-se</a>
 				</p>
 				<div class="wrapper__form__pseudos"></div>
 				<div class="wrapper__form__github">
@@ -194,7 +194,7 @@ $secondary-purple: #41356b;
 		&__pseudos {
 			position: relative;
 			font-size: 12px;
-			color: rgb(135, 134, 139);
+			color: #87868b;
 			margin: 24px 0px;
 			text-align: center;
 			&::before {
@@ -221,7 +221,7 @@ $secondary-purple: #41356b;
 				background: #29292e;
 				border: 0px;
 				border-radius: 5px;
-				color: rgb(255, 255, 255);
+				color: #ffffff;
 				display: flex;
 				font-size: 16px;
 				font-weight: bold;
