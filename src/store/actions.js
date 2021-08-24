@@ -48,5 +48,12 @@ export default {
     commit('setTokenExpiration', '')
     removeItemFromStorage('token')
     removeItemFromStorage('tokenExpiration')
+  },
+  setToast({ commit }, payload){
+    commit('setToast', {
+      show: payload.status,
+      message: payload.message,
+      color: payload.color
+    })
   }
 }

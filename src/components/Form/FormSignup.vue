@@ -58,7 +58,6 @@
 
 <script>
 import FormField from '@/components/Form/FormField'
-import firebase from 'firebase'
 
 export default {
 	data: () => ({
@@ -98,7 +97,12 @@ export default {
 				await this.$store.dispatch('signup', { email, password })
 				this.$router.push('/authenticated')
 			} catch (e) {
-				console.error(e)
+				console.log(e)
+				this.$store.dispatch('setToast', {
+					status: true,
+					message: e.response.data.error.message,
+					color: '#993840',
+				})
 			}
 		},
 		isFocused({ placeholder }) {

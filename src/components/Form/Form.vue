@@ -27,7 +27,7 @@
 				<button :disabled="disableButton" type="submit">Login</button>
 				<p>
 					Don't have an account?
-					<a href="/signup">Register</a>
+					<router-link tag="a" to="/signup">Register</router-link>
 				</p>
 				<div class="wrapper__form__pseudos"></div>
 				<div class="wrapper__form__github">
@@ -84,7 +84,11 @@ export default {
 				await this.$store.dispatch('signin', { email, password })
 				this.$router.push('/authenticated')
 			} catch (e) {
-				console.error(e)
+				this.$store.dispatch('setToast', {
+					status: true,
+					message: e.response.data.error.message,
+					color: '#993840',
+				})
 			}
 		},
 		isFocused({ placeholder }) {

@@ -1,4 +1,9 @@
 export default {
   token: null,
-  tokenExpiration: ''
+  tokenExpiration: '',
+  toast: {
+    show: false,
+    message: '',
+    color: '#993840'
+  }
 }

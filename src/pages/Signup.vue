@@ -12,7 +12,7 @@
 				<span class="material-icons">
 					arrow_back
 				</span>
-				<p>Back to login</p>
+				<router-link tag="p" to="/">Back to login</router-link>
 			</div>
 		</div>
 	</div>
