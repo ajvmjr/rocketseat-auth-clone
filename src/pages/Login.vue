@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="container__form-wrapper">
-			<h1>Faça seu login na plataforma</h1>
+			<h1>Log in to the platform</h1>
 			<Form />
 		</div>
 	</div>

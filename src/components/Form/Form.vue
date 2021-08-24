@@ -13,7 +13,7 @@
 					v-model="email"
 				/>
 				<FormField
-					placeholder="Senha"
+					placeholder="Password"
 					rules="required"
 					@focus="isFocused"
 					@blur="itsBlurry"
@@ -23,15 +23,15 @@
 					:outerIcon="passwordIconConfig.outer"
 					v-model="password"
 				/>
-				<span class="wrapper__form__span">Esqueci minha senha</span>
-				<button :disabled="disableButton" type="submit">Entrar</button>
+				<span class="wrapper__form__span">Forgot my password</span>
+				<button :disabled="disableButton" type="submit">Login</button>
 				<p>
-					Não tem uma conta?
-					<a href="/signup">Registre-se</a>
+					Don't have an account?
+					<a href="/signup">Register</a>
 				</p>
 				<div class="wrapper__form__pseudos"></div>
 				<div class="wrapper__form__github">
-					<p>Ou entre com</p>
+					<p>Or enter with</p>
 					<a
 						href="#"
 						@mouseenter="toggleGithubIconColor"
@@ -95,7 +95,7 @@ export default {
 				}
 			}
 
-			if (placeholder === 'Senha') {
+			if (placeholder === 'Password') {
 				this.passwordIconConfig.inner = {
 					...this.passwordIconConfig.inner,
 					fill: '#8257e6',
@@ -110,7 +110,7 @@ export default {
 				}
 			}
 
-			if (placeholder === 'Senha') {
+			if (placeholder === 'Password') {
 				this.passwordIconConfig.inner = {
 					...this.passwordIconConfig.inner,
 					fill: '#202024',
