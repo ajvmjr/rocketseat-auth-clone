@@ -4,7 +4,7 @@ import { getStorage, setStorage, removeItemFromStorage } from '@/utils/storage'
 export default {
   async signup({ commit, dispatch }, { email, password }){
     try {
-      const { data } = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.VUE_APP_FIREBASE_KEY}`, {
+      const { data } = await axios.post(`${process.env.VUE_APP_BASE_URL}signUp?key=${process.env.VUE_APP_FIREBASE_KEY}`, {
         email,
         password,
         returnSecureToken: true
@@ -16,7 +16,7 @@ export default {
   },
   async signin({ dispatch }, { email, password }){
     try {
-      const { data } = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.VUE_APP_FIREBASE_KEY}`, {
+      const { data } = await axios.post(`${process.env.VUE_APP_BASE_URL}signInWithPassword?key=${process.env.VUE_APP_FIREBASE_KEY}`, {
         email,
         password,
         returnSecureToken: true

@@ -14,6 +14,8 @@ Vue.config.productionTip = false
 Vue.component('ValidationProvider', ValidationProvider)
 Vue.component('ValidationObserver', ValidationObserver)
 
+console.log('env', JSON.stringify(process.env))
+
 setInteractionMode('eager')
 
 firebase.initializeApp({
